@@ -22,7 +22,8 @@ module.exports = {
    * @type String
    * @optional
    */
-  description: 'Spurs unrivalled insight into proxy networks and network infrastructure provides you the context you need to assess the risk of an ongoing connection. The Context API always provides the latest confirmed details for an IP.',
+  description:
+    'Spurs unrivalled insight into proxy networks and network infrastructure provides you the context you need to assess the risk of an ongoing connection. The Context API always provides the latest confirmed details for an IP.',
   entityTypes: ['IPv4'],
   /**
    * Provide custom component logic and template for rendering the integration details block.  If you do not
@@ -66,7 +67,7 @@ module.exports = {
     // the url parameter (by embedding the auth info in the uri)
     proxy: '',
 
-    rejectUnauthorized: false
+    rejectUnauthorized: true
   },
   logging: {
     level: 'info' //trace, debug, info, warn, error, fatal
@@ -78,15 +79,15 @@ module.exports = {
    * @type Array
    * @optional
    */
-   options: [
-     {
-       key: "apiKey",
-       name: "Valid Spur Context API Key",
-       description: "Valid Spur Context API Key",
-       default: "",
-       type: "password",
-       userCanEdit: true,
-       adminOnly: false
-     }
-   ]
+  options: [
+    {
+      key: 'apiKey',
+      name: 'Valid Spur Context API Key',
+      description: 'Valid Spur Context API Key',
+      default: '',
+      type: 'password',
+      userCanEdit: true,
+      adminOnly: false
+    }
+  ]
 };
