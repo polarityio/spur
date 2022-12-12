@@ -1,143 +1,144 @@
 {{#if details}}
 
-  <span class="p-title">{{fa-icon "info" fixedWidth=true}} Spur IP Context Results</span>
+  <span class='p-title'>{{fa-icon 'info' fixedWidth=true}} Spur IP Context Results</span>
 
   {{#if details.anonymous}}
     <div>
-      <span class="p-key">Anonymity Provider: </span>
-      <span class="p-value">{{details.anonymous}}</span>
+      <span class='p-key'>Anonymity Provider: </span>
+      <span class='p-value'>{{details.anonymous}}</span>
     </div>
   {{/if}}
   {{#if details.as.number}}
     <div>
-      <span class="p-key">ASN: </span>
-      <span class="p-value">{{details.as.number}}</span>
+      <span class='p-key'>ASN: </span>
+      <span class='p-value'>{{details.as.number}}</span>
     </div>
   {{/if}}
   {{#if details.as.organization}}
     <div>
-      <span class="p-key">AS Organization: </span>
-      <span class="p-value">{{details.as.organization}}</span>
+      <span class='p-key'>AS Organization: </span>
+      <span class='p-value'>{{details.as.organization}}</span>
     </div>
   {{/if}}
   {{#if details.assignment.lastTurnover}}
     <div>
-      <span class="p-key">Customer IP Last Turnover: </span>
-      <span class="p-value">{{details.assignment.lastTurnover}}</span>
+      <span class='p-key'>Customer IP Last Turnover: </span>
+      <span class='p-value'>{{details.assignment.lastTurnover}}</span>
     </div>
   {{/if}}
   {{#if details.devices.estimate}}
     <div>
-      <span class="p-key">Estimated Device Count on IP: </span>
-      <span class="p-value">{{details.devices.estimate}}</span>
+      <span class='p-key'>Estimated Device Count on IP: </span>
+      <span class='p-value'>{{details.devices.estimate}}</span>
     </div>
   {{/if}}
   {{#if details.deviceBehaviors.behaviors}}
-    <h1 class="p-title">{{fa-icon "chart-network" fixedWidth=true}}Device Behaviors </h1>
+    <h1 class='p-title'>{{fa-icon 'chart-network' fixedWidth=true}}Device Behaviors </h1>
     {{#each details.deviceBehaviors.behaviors as |behavior|}}
       <div>
-        <span class="section-tag">{{behavior.name}}</span>
+        <span class='section-tag'>{{behavior.name}}</span>
       </div>
     {{/each}}
   {{/if}}
 
-
-  <span class="p-title">{{fa-icon "location-arrow" fixedWidth=true}} Maxmind Geolite Details</span>
+  <span class='p-title'>{{fa-icon 'location-arrow' fixedWidth=true}} Maxmind Geolite Details</span>
 
   {{#if details.geoLite.city}}
     <div>
-      <span class="p-key">City: </span>
-      <span class="p-value">{{details.geoLite.city}}</span>
+      <span class='p-key'>City: </span>
+      <span class='p-value'>{{details.geoLite.city}}</span>
     </div>
   {{/if}}
   {{#if details.geoLite.country}}
     <div>
-      <span class="p-key">Country: </span>
-      <span class="p-value">{{details.geoLite.country}}</span>
+      <span class='p-key'>Country: </span>
+      <span class='p-value'>{{details.geoLite.country}}</span>
     </div>
   {{/if}}
   {{#if details.geoLite.state}}
     <div>
-      <span class="p-key">State: </span>
-      <span class="p-value">{{details.geoLite.state}}</span>
+      <span class='p-key'>State: </span>
+      <span class='p-value'>{{details.geoLite.state}}</span>
     </div>
   {{/if}}
   {{#if (eq details.geoPrecision.exists true)}}
-    <span class="p-title">{{fa-icon "map-pin" fixedWidth=true}} Precision Geo Details</span>
+    <span class='p-title'>{{fa-icon 'map-pin' fixedWidth=true}} Precision Geo Details</span>
   {{/if}}
   {{#if details.geoPrecision.city}}
     <div>
-      <span class="p-key">City: </span>
-      <span class="p-value">{{details.geoPrecision.city}}</span>
+      <span class='p-key'>City: </span>
+      <span class='p-value'>{{details.geoPrecision.city}}</span>
     </div>
   {{/if}}
   {{#if details.geoPrecision.country}}
     <div>
-      <span class="p-key">Country: </span>
-      <span class="p-value">{{details.geoPrecision.country}}</span>
+      <span class='p-key'>Country: </span>
+      <span class='p-value'>{{details.geoPrecision.country}}</span>
     </div>
   {{/if}}
   {{#if details.geoPrecision.state}}
     <div>
-      <span class="p-key">State: </span>
-      <span class="p-value">{{details.geoPrecision.state}}</span>
+      <span class='p-key'>State: </span>
+      <span class='p-value'>{{details.geoPrecision.state}}</span>
     </div>
   {{/if}}
   {{#if details.geoPrecision.point}}
     <div>
-      <span class="p-key">Lat/Long: </span>
-      <span class="p-value">{{details.geoPrecision.point.latitude}} / {{details.geoPrecision.point.longitude}}</span>
+      <span class='p-key'>Lat/Long: </span>
+      <span class='p-value'>{{details.geoPrecision.point.latitude}} / {{details.geoPrecision.point.longitude}}</span>
     </div>
   {{/if}}
   {{#if details.geoPrecision.point.radius}}
     <div>
-      <span class="p-key">Radius (meters): </span>
-      <span class="p-value">{{details.geoPrecision.point.radius }}</span>
+      <span class='p-key'>Radius (meters): </span>
+      <span class='p-value'>{{details.geoPrecision.point.radius}}</span>
     </div>
   {{/if}}
   {{#if details.proxiedTraffic.proxies}}
-    <h1 class="p-title">{{fa-icon "project-diagram" fixedWidth=true}}Active Proxy Services Using IP </h1>
+    <h1 class='p-title'>{{fa-icon 'project-diagram' fixedWidth=true}}Active Proxy Services Using IP </h1>
     {{#each details.proxiedTraffic.proxies as |proxy index|}}
-        <div>
-            <span class="p-key">Proxy {{inc index}}: </span>
-            <span class="p-value">{{proxy.name}} / {{proxy.type}}</span>
-        </div>
+      <div>
+        <span class='p-key'>Proxy {{inc index}}: </span>
+        <span class='p-value'>{{proxy.name}} / {{proxy.type}}</span>
+      </div>
     {{/each}}
   {{/if}}
   {{#if details.vpnOperators.operators}}
-    <h1 class="p-title">{{fa-icon "network-wired" fixedWidth=true}}VPN Operators </h1>
+    <h1 class='p-title'>{{fa-icon 'network-wired' fixedWidth=true}}VPN Operators </h1>
     {{#each details.vpnOperators.operators as |operator index|}}
       <div>
-        <span class="p-key">VPN Operator {{inc index}}: </span>
-        <span class="p-value">{{operator.name}}</span>
+        <span class='p-key'>VPN Operator {{inc index}}: </span>
+        <span class='p-value'>{{operator.name}}</span>
       </div>
     {{/each}}
   {{/if}}
   {{#if details.wifi.ssids}}
-    <h1 class="p-title">{{fa-icon "wifi" fixedWidth=true}}WiFi SSIDs </h1>
+    <h1 class='p-title'>{{fa-icon 'wifi' fixedWidth=true}}WiFi SSIDs </h1>
     {{#each details.wifi.ssids as |ssid index|}}
       <div>
-        <span class="p-key">WiFi SSID {{inc index}}: </span>
-        <span class="p-value">{{ssid}}</span>
+        <span class='p-key'>WiFi SSID {{inc index}}: </span>
+        <span class='p-value'>{{ssid}}</span>
       </div>
     {{/each}}
   {{/if}}
   {{#if (eq details.similarIPs.exists true)}}
     {{#if (eq numRelatedIpsShown 0)}}
       <div>
-        <span class="p-title">{{fa-icon "clone" fixedWidth=true}} No Related IPs Found</span>
+        <span class='p-title'>{{fa-icon 'clone' fixedWidth=true}} No Related IPs Found</span>
       </div>
     {{else}}
-      <div class="toggle-header">
-        <span class="p-action" {{action "toggleShowRelated"}}>
-          {{fa-icon "clone" fixedWidth=true}}
-          Related IP's ({{numRelatedIpsShown}} of {{details.similarIPs.ips.length}})
-          {{fa-icon (if showRelated "caret-up" "caret-down") fixedWidth=true}}
+      <div class='toggle-header'>
+        <span class='p-action' {{action 'toggleShowRelated'}}>
+          {{fa-icon 'clone' fixedWidth=true}}
+          Related IP's ({{numRelatedIpsShown}}
+          of
+          {{details.similarIPs.ips.length}})
+          {{fa-icon (if showRelated 'caret-up' 'caret-down') fixedWidth=true}}
         </span>
       </div>
       {{#if showRelated}}
         {{#each (limit details.similarIPs.ips maxRelatedToShow) as |related|}}
-          <span class="section-tag">{{related}}</span>
+          <span class='section-tag'>{{related}}</span>
         {{/each}}
       {{/if}}
     {{/if}}

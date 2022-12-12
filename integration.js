@@ -60,7 +60,7 @@ function doLookup(entities, options, cb) {
 
     let requestOptions = {
       method: 'GET',
-      uri: `https://api.spur.us/v1/context/${entity.value}`,
+      uri: `https://api.spur.us/v2/context/${entity.value}`,
       headers: {
         token: options.apiKey
       },
