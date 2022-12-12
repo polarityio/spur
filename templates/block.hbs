@@ -43,22 +43,22 @@
 
   <span class='p-title'>{{fa-icon 'location-arrow' fixedWidth=true}} Maxmind Geolite Details</span>
 
-  {{#if details.geoLite.city}}
+  {{#if details.location.city}}
     <div>
       <span class='p-key'>City: </span>
-      <span class='p-value'>{{details.geoLite.city}}</span>
+      <span class='p-value'>{{details.location.city}}</span>
     </div>
   {{/if}}
-  {{#if details.geoLite.country}}
+  {{#if details.location.country}}
     <div>
       <span class='p-key'>Country: </span>
-      <span class='p-value'>{{details.geoLite.country}}</span>
+      <span class='p-value'>{{details.location.country}}</span>
     </div>
   {{/if}}
-  {{#if details.geoLite.state}}
+  {{#if details.location.state}}
     <div>
       <span class='p-key'>State: </span>
-      <span class='p-value'>{{details.geoLite.state}}</span>
+      <span class='p-value'>{{details.location.state}}</span>
     </div>
   {{/if}}
   {{#if (eq details.geoPrecision.exists true)}}
