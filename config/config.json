@@ -1,0 +1,49 @@
+{
+  "name": "Spur Context API Search",
+  "acronym": "SPUR",
+  "description": "Spurs unrivalled insight into proxy networks and network infrastructure provides you the context you need to assess the risk of an ongoing connection. The Context API always provides the latest confirmed details for an IP.",
+  "entityTypes": [
+    "IPv4"
+  ],
+  "styles": [
+    "./styles/style.less"
+  ],
+  "block": {
+    "component": {
+      "file": "./components/block.js"
+    },
+    "template": {
+      "file": "./templates/block.hbs"
+    }
+  },
+  "summary": {
+    "component": {
+      "file": "./components/summary.js"
+    },
+    "template": {
+      "file": "./templates/summary.hbs"
+    }
+  },
+  "request": {
+    "cert": "",
+    "key": "",
+    "passphrase": "",
+    "ca": "",
+    "proxy": "",
+    "rejectUnauthorized": true
+  },
+  "logging": {
+    "level": "info"
+  },
+  "options": [
+    {
+      "key": "apiKey",
+      "name": "Valid Spur Context API Key",
+      "description": "Valid Spur Context API Key",
+      "default": "",
+      "type": "password",
+      "userCanEdit": true,
+      "adminOnly": false
+    }
+  ]
+}
