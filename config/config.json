@@ -1,0 +1,42 @@
+{
+  "name": "Spur Context API Search",
+  "acronym": "SPUR",
+  "description": "Search the Spur Context API for information on IPs including client behaviors, proxies, risks and services.",
+  "defaultColor": "light-gray",
+  "entityTypes": [
+    "IPv4"
+  ],
+  "styles": [
+    "./styles/style.less"
+  ],
+  "block": {
+    "component": {
+      "file": "./components/block.js"
+    },
+    "template": {
+      "file": "./templates/block.hbs"
+    }
+  },
+  "request": {
+    "cert": "",
+    "key": "",
+    "passphrase": "",
+    "ca": "",
+    "proxy": "",
+    "rejectUnauthorized": true
+  },
+  "logging": {
+    "level": "info"
+  },
+  "options": [
+    {
+      "key": "apiKey",
+      "name": "Spur Context API Key",
+      "description": "Provide your Spur IP Context API Key",
+      "default": "",
+      "type": "password",
+      "userCanEdit": false,
+      "adminOnly": true
+    }
+  ]
+}

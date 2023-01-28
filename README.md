@@ -2,14 +2,15 @@
 
 The Polarity Spur integration allows for IP entity types to be enriched against the Spur Context API.
 
-Register with a credit card for a 30-day free trial at the URL below:
+Learn more about the API here: https://spur.us/products/context-api/
 
-https://spur.us/app/auth/sign-up
+<img src="images/overlay.png" width="50%">
 
 ## Installation Instructions
 
-### API Key 
-API Key provided once you sign up for access to Spur. 
+### Spur Context API Key 
+
+Provide your Spur IP Context API Key. 
 
 Installation instructions for integrations are provided on the [PolarityIO GitHub Page](https://polarityio.github.io/).
 
