@@ -4,7 +4,7 @@ The Polarity Spur integration allows for IP entity types to be enriched against 
 
 Learn more about the API here: https://spur.us/products/context-api/
 
-<img src="assets/overlay.png" width="50%">
+<img src="images/overlay.png" width="50%">
 
 ## Installation Instructions
 
