@@ -75,8 +75,8 @@ module.exports = {
   options: [
     {
       key: "apiKey",
-      name: "Valid Spur Context API Key",
-      description: "Valid Spur Context API Key",
+      name: "Spur Context API Key",
+      description: "Provide your Spur IP Context API Key",
       default: "",
       type: "password",
       userCanEdit: false,
