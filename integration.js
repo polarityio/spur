@@ -114,12 +114,13 @@ function doLookup(entities, options, cb) {
 
 function getSummaryTags(body) {
   const tags = [];
-  if (body.anonymous) {
-    tags.push("Is Anonymity Provider");
-  }
 
   if (body.as && body.as.organization) {
     tags.push(`Org: ${body.as.organization}`);
+  }
+
+  if(body.location && body.location.country){
+    tags.push(`Country: ${body.location.country}`);
   }
 
   if (Array.isArray(body.services) && body.services.length > 0) {
