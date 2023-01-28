@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-const request = require('request');
-const config = require('./config/config');
-const async = require('async');
-const fs = require('fs');
+const request = require("postman-request");
+const config = require("./config/config");
+const async = require("async");
+const fs = require("fs");
 
 let Logger;
 let requestWithDefaults;
@@ -16,27 +16,27 @@ function startup(logger) {
 
   const { cert, key, passphrase, ca, proxy, rejectUnauthorized } = config.request;
 
-  if (typeof cert === 'string' && cert.length > 0) {
+  if (typeof cert === "string" && cert.length > 0) {
     defaults.cert = fs.readFileSync(cert);
   }
 
-  if (typeof key === 'string' && key.length > 0) {
+  if (typeof key === "string" && key.length > 0) {
     defaults.key = fs.readFileSync(key);
   }
 
-  if (typeof passphrase === 'string' && passphrase.length > 0) {
+  if (typeof passphrase === "string" && passphrase.length > 0) {
     defaults.passphrase = passphrase;
   }
 
-  if (typeof ca === 'string' && ca.length > 0) {
+  if (typeof ca === "string" && ca.length > 0) {
     defaults.ca = fs.readFileSync(ca);
   }
 
-  if (typeof proxy === 'string' && proxy.length > 0) {
+  if (typeof proxy === "string" && proxy.length > 0) {
     defaults.proxy = proxy;
   }
 
-  if (typeof rejectUnauthorized === 'boolean') {
+  if (typeof rejectUnauthorized === "boolean") {
     defaults.rejectUnauthorized = rejectUnauthorized;
   }
 
@@ -49,28 +49,27 @@ function doLookup(entities, options, cb) {
 
   Logger.debug(entities);
   entities.forEach((entity) => {
-
-    if(entity.isPrivateIP){
+    if (entity.isPrivateIP) {
       lookupResults.push({
         entity: entity,
         data: null
       });
       return;
-    } 
+    }
 
     let requestOptions = {
-      method: 'GET',
+      method: "GET",
       uri: `https://api.spur.us/v2/context/${entity.value}`,
       headers: {
         token: options.apiKey
       },
       json: true
-    }
+    };
 
-    Logger.trace({ requestOptions }, 'Request Options');
+    Logger.trace({ requestOptions }, "Request Options");
 
-    tasks.push(function(done) {
-      requestWithDefaults(requestOptions, function(error, res, body) {
+    tasks.push(function (done) {
+      requestWithDefaults(requestOptions, function (error, res, body) {
         Logger.trace({ body, status: res.statusCode });
         let processedResult = handleRestError(error, entity, res, body);
 
@@ -86,7 +85,7 @@ function doLookup(entities, options, cb) {
 
   async.parallelLimit(tasks, MAX_PARALLEL_LOOKUPS, (err, results) => {
     if (err) {
-      Logger.error({ err: err }, 'Error');
+      Logger.error({ err: err }, "Error");
       cb(err);
       return;
     }
@@ -101,16 +100,37 @@ function doLookup(entities, options, cb) {
         lookupResults.push({
           entity: result.entity,
           data: {
-            summary: [],
+            summary: getSummaryTags(result.body),
             details: result.body
           }
         });
       }
     });
 
-    Logger.debug({ lookupResults }, 'Results');
+    Logger.debug({ lookupResults }, "Results");
     cb(null, lookupResults);
   });
+}
+
+function getSummaryTags(body) {
+  const tags = [];
+  if (body.anonymous) {
+    tags.push("Is Anonymity Provider");
+  }
+
+  if (body.as && body.as.organization) {
+    tags.push(`Org: ${body.as.organization}`);
+  }
+
+  if (Array.isArray(body.services) && body.services.length > 0) {
+    tags.push(body.services.map(service => service.toLowerCase()).join(", "));
+  }
+
+  if (Array.isArray(body.risks) && body.risks.length > 0) {
+    tags.push(body.risks.map(risk => risk.toLowerCase()).join(", "));
+  }
+
+  return tags;
 }
 
 function handleRestError(error, entity, res, body) {
@@ -119,7 +139,7 @@ function handleRestError(error, entity, res, body) {
   if (error) {
     return {
       error: error,
-      detail: 'HTTP Request Error'
+      detail: "HTTP Request Error"
     };
   }
 
@@ -131,29 +151,29 @@ function handleRestError(error, entity, res, body) {
     };
   } else if (res.statusCode === 400) {
     result = {
-      error: 'Specified IP is Private',
+      error: "Specified IP is Private",
       detail: body.query_status
     };
   } else if (res.statusCode === 403) {
     result = {
-      error: 'Invalid Token Supplied',
+      error: "Invalid Token Supplied",
       detail: body.query_status
     };
   } else if (res.statusCode === 404) {
     result = {
-      error: 'IP address Not Found',
+      error: "IP address Not Found",
       detail: body.query_status
     };
   } else if (res.statusCode === 429) {
     result = {
-      error: 'Out of Credits',
+      error: "Out of Credits",
       detail: body.query_status
     };
   } else {
     result = {
-      error: 'Unexpected Error',
-      statusCode: res ? res.statusCode : 'Unknown',
-      detail: 'An unexpected error occurred'
+      error: "Unexpected Error",
+      statusCode: res ? res.statusCode : "Unknown",
+      detail: "An unexpected error occurred"
     };
   }
 
@@ -162,8 +182,8 @@ function handleRestError(error, entity, res, body) {
 
 function validateOption(errors, options, optionName, errMessage) {
   if (
-    typeof options[optionName].value !== 'string' ||
-    (typeof options[optionName].value === 'string' && options[optionName].value.length === 0)
+    typeof options[optionName].value !== "string" ||
+    (typeof options[optionName].value === "string" && options[optionName].value.length === 0)
   ) {
     errors.push({
       key: optionName,
@@ -175,7 +195,7 @@ function validateOption(errors, options, optionName, errMessage) {
 function validateOptions(options, callback) {
   let errors = [];
 
-  validateOption(errors, options, 'apiKey', 'You must provide a valid API Key.');
+  validateOption(errors, options, "apiKey", "You must provide a valid API Key.");
 
   callback(null, errors);
 }

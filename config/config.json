@@ -1,7 +1,8 @@
 {
   "name": "Spur Context API Search",
   "acronym": "SPUR",
-  "description": "Spurs unrivalled insight into proxy networks and network infrastructure provides you the context you need to assess the risk of an ongoing connection. The Context API always provides the latest confirmed details for an IP.",
+  "description": "Search the Spur Context API for information on IPs including client behaviors, proxies, risks and services.",
+  "defaultColor": "light-gray",
   "entityTypes": [
     "IPv4"
   ],
@@ -14,14 +15,6 @@
     },
     "template": {
       "file": "./templates/block.hbs"
-    }
-  },
-  "summary": {
-    "component": {
-      "file": "./components/summary.js"
-    },
-    "template": {
-      "file": "./templates/summary.hbs"
     }
   },
   "request": {
