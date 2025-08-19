@@ -44,7 +44,7 @@
     {
       "key": "ignoreIps",
       "name": "IPs To Ignore",
-      "description": "A comma-delimited list of IP address or CIDR ranges to ignore.",
+      "description": "A comma-delimited list of IP addresses or CIDR ranges to ignore.",
       "default": "",
       "type": "text",
       "userCanEdit": false,
