@@ -12,6 +12,10 @@ Learn more about the API here: https://spur.us/products/context-api/
 
 Provide your Spur IP Context API Key. 
 
+### Spur Context API Key
+
+A comma-delimited list of IP address or CIDR ranges to ignore.
+
 Installation instructions for integrations are provided on the [PolarityIO GitHub Page](https://polarityio.github.io/).
 
 ## Polarity

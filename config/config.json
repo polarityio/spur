@@ -7,6 +7,9 @@
   "entityTypes": [
     "IPv4"
   ],
+  "dataTypes": [
+    "IPv4"
+  ],
   "styles": [
     "./styles/style.less"
   ],
@@ -26,7 +29,7 @@
     "proxy": ""
   },
   "logging": {
-    "level": "info"
+    "level": "trace"
   },
   "options": [
     {
@@ -35,6 +38,15 @@
       "description": "Provide your Spur IP Context API Key",
       "default": "",
       "type": "password",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
+      "key": "ignoreIps",
+      "name": "IPs To Ignore",
+      "description": "A comma-delimited list of IP address or CIDR ranges to ignore.",
+      "default": "",
+      "type": "text",
       "userCanEdit": false,
       "adminOnly": true
     }

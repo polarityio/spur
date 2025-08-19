@@ -1,11 +1,12 @@
 {
   "name": "spur",
-  "version": "3.2.2",
+  "version": "3.3.0",
   "main": "./integration.js",
   "private": true,
   "dependencies": {
-    "postman-request": "^2.88.1-postman.32",
+    "postman-request": "^2.88.1-postman.43",
     "lodash": "^4.17.21",
-    "async": "^3.2.4"
+    "async": "^3.2.6",
+    "ip-address": "^10.0.1"
   }
 }
